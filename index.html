@@ -145,6 +145,12 @@
     font-size: clamp(17px, 2.4vw, 27px); line-height: 2.1; letter-spacing: 0.14em;
     text-shadow: 0 2px 18px rgba(6,33,47,0.5);
   }
+  .hero-sub {
+    margin-top: 16px; color: rgba(255,255,255,0.72);
+    font-family: var(--serif); font-size: clamp(13px, 1.6vw, 17px);
+    line-height: 2.0; letter-spacing: 0.1em;
+    text-shadow: 0 1px 12px rgba(6,33,47,0.45);
+  }
   .hero-meta {
     position: absolute; bottom: clamp(36px, 7vh, 76px); left: 0; right: 0; z-index: 3;
     text-align: center; color: #fff;
@@ -214,10 +220,30 @@
   /* ============ STORY ============ */
   .story { background: var(--sea-50); overflow: hidden; }
   .story-lead {
-    max-width: 640px; margin: clamp(40px, 6vw, 64px) auto 0; text-align: center;
+    max-width: 640px; margin: clamp(30px, 4vw, 46px) auto 0; text-align: center;
     font-family: var(--serif-display); font-weight: 500;
-    font-size: clamp(20px, 2.8vw, 30px); line-height: 2.3; letter-spacing: 0.08em;
-    color: var(--ink);
+    font-size: clamp(17px, 2.2vw, 24px); line-height: 2.3; letter-spacing: 0.08em;
+    color: var(--ink-2);
+  }
+  .story-acts { margin-top: clamp(48px, 7vw, 80px); max-width: 780px; margin-inline: auto; }
+  .act {
+    display: grid; grid-template-columns: 70px 1fr; gap: clamp(18px, 3vw, 40px);
+    padding-block: clamp(32px, 4.5vw, 50px);
+    border-top: 1px solid rgba(27,92,138,0.14);
+  }
+  .act:last-child { border-bottom: 1px solid rgba(27,92,138,0.14); }
+  .act-num {
+    font-family: var(--latin); font-size: clamp(40px, 5vw, 60px); font-weight: 400;
+    color: var(--sea-200); line-height: 1; letter-spacing: 0.02em;
+  }
+  .act-title {
+    font-family: var(--serif-display); font-weight: 600;
+    font-size: clamp(17px, 2.2vw, 22px); color: var(--sea-700);
+    letter-spacing: 0.06em; margin-bottom: 14px;
+  }
+  .act-body {
+    font-family: var(--serif); font-size: var(--t-body);
+    line-height: 2.25; color: var(--ink-2); letter-spacing: 0.03em;
   }
 
   /* ============ TRAILER ============ */
@@ -267,7 +293,7 @@
   /* ============ CAST ============ */
   .cast { background: #fff; overflow: hidden; }
   .cast-grid {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(14px, 1.6vw, 24px);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 36px);
     margin-top: clamp(44px, 6vw, 74px);
   }
   .cast-card { text-align: center; }
@@ -277,7 +303,6 @@
   .cast-role { font-family: var(--sans); font-weight: 700; font-size: 10px; letter-spacing: 0.2em; color: var(--sea-600); }
   .cast-name { font-family: var(--serif-display); font-weight: 600; font-size: 21px; color: var(--ink); margin: 8px 0 10px; letter-spacing: 0.08em; }
   .cast-desc { font-family: var(--serif); font-size: 12.5px; line-height: 1.95; color: var(--ink-3); }
-  @media (max-width: 920px){ .cast-grid { grid-template-columns: repeat(3, 1fr); row-gap: 36px; } }
   @media (max-width: 560px){ .cast-grid { grid-template-columns: repeat(2, 1fr); } }
 
   /* ============ GALLERY ============ */
@@ -380,7 +405,10 @@
     .about-body { font-size: 15px; }
 
     /* ストーリー */
-    .story-lead { font-size: 18px; letter-spacing: 0.05em; }
+    .story-lead { font-size: 16px; letter-spacing: 0.05em; }
+    .act { grid-template-columns: 1fr; gap: 8px; padding-block: 28px; }
+    .act-num { font-size: 32px; }
+    .act-title { margin-bottom: 10px; }
 
     /* トレーラー */
     .trailer-copy .eyebrow,
@@ -438,6 +466,7 @@
     <img class="hero-logo" src="assets/logo.png" alt="ラストコール">
     <img class="hero-sparkle" src="assets/deco/divider-sparkle.png" alt="">
     <p class="hero-tagline">天草の海辺で、<br>高校最後の夏が鳴り出す。</p>
+    <p class="hero-sub">何もないと思っていた町で、<br>僕らは初めて、自分たちの音を見つけた。</p>
   </div>
   <div class="hero-meta">
     <div class="hero-date">2026.8.29<span class="sat">SAT</span></div>
@@ -453,22 +482,43 @@
       <img src="assets/photos/still-06.jpg" alt="天草の海">
     </div>
     <div class="about-copy reveal">
-      <div class="eyebrow">INTRODUCTION<span class="eyebrow-jp">イントロダクション</span></div>
-      <p class="about-body">眩しいほどの青、きらめく海、鳴り響く音楽。</p>
-      <p class="about-body">熊本・天草の海辺を舞台に、バンドに青春を懸ける高校生たちの姿を描いた短編映画。音楽、恋、友情、そして進路——それぞれの想いがぶつかり合いながら、「自分たちの音」を探していく、ひと夏の物語。</p>
+      <div class="eyebrow">INTRODUCTION<span class="eyebrow-jp">この夏、僕らの音が鳴り出す。</span></div>
+      <p class="about-body">天草の海辺で暮らす高校生たちが、恋や進路、音楽にぶつかりながら、高校最後の夏を駆け抜けていく青春音楽映画。</p>
+      <p class="about-body">うまくいかないことばかりでも、それでももう一度、ステージに立つ。——これは、何者でもなかった彼らが、自分たちの音を見つけるまでの物語。</p>
     </div>
   </div>
 </section>
 
 <!-- ============ 04 STORY ============ -->
 <section class="story pad" id="story" data-screen-label="STORY">
-  <img class="splash" src="assets/deco/splash-wide.png" alt="" style="top:30px; right:-30px; width:300px; opacity:.5;">
   <div class="wrap">
     <div class="center reveal">
-      <div class="eyebrow">STORY<span class="eyebrow-jp">ストーリー</span></div>
-      <img class="deco-line" src="assets/deco/divider-dots.png" alt="">
+      <div class="eyebrow">STORY<span class="eyebrow-jp">何もないと思っていた町で、僕らは初めて夢を見た。</span></div>
     </div>
-    <p class="story-lead reveal">バラバラだった僕らが、ひと夏だけ、同じ音を鳴らした。<br>下手でも、すれ違っても、もう一回。<br>届かない言葉も、音にすれば——。</p>
+    <p class="story-lead reveal">夢と呼ぶにはまだ遠く、恋と呼ぶにはまだ不器用で、<br>未来と呼ぶにはまだ怖かった。<br>それでも、あの夏の僕らには、どうしても鳴らしたい音があった。</p>
+    <div class="story-acts">
+      <div class="act reveal">
+        <div class="act-num">01</div>
+        <div>
+          <div class="act-title">はじまりの夏</div>
+          <p class="act-body">天草で暮らす高校生・晴人は、幼なじみの葵、友人の陸と陽平と、何気ない毎日を過ごしていた。新学期、東京からやってきた音楽教師・白石茜との出会いをきっかけに、晴人たちは軽音楽部でバンドを始める。</p>
+        </div>
+      </div>
+      <div class="act reveal">
+        <div class="act-num">02</div>
+        <div>
+          <div class="act-title">うまくいかない夏</div>
+          <p class="act-body">勢いだけで始めたバンドは、初ライブで大失敗。SNSで笑われ、仲間との関係も少しずつ揺らいでいく。恋、憧れ、進路、地元に残ること——晴人たちは、それぞれの気持ちと向き合うことになる。</p>
+        </div>
+      </div>
+      <div class="act reveal">
+        <div class="act-num">03</div>
+        <div>
+          <div class="act-title">最後のステージ</div>
+          <p class="act-body">「このまま終わりたくない」——晴人たちはもう一度、海辺でリベンジライブを開くことを決める。不器用な彼らの音は、今度こそ誰かに届くのか。高校最後の夏、彼らのラストコールが鳴り響く。</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -498,42 +548,46 @@
 
 <!-- ============ 06 CAST / CHARACTER ============ -->
 <section class="cast pad" id="cast" data-screen-label="CAST">
-  <img class="splash" src="assets/deco/cloud-blob.png" alt="" style="top:40px; left:-50px; width:260px; opacity:.45;">
   <div class="wrap">
     <div class="center reveal">
-      <div class="eyebrow">CAST / CHARACTER<span class="eyebrow-jp">登場人物</span></div>
-      <img class="deco-line" src="assets/deco/divider-dots.png" alt="">
+      <div class="eyebrow">CAST / CHARACTER<span class="eyebrow-jp">あの夏を生きた人たち。</span></div>
     </div>
     <div class="cast-grid">
       <article class="cast-card reveal">
         <div class="cast-photo"><img src="assets/photos/still-02.jpg" alt="晴人" style="object-position: 28% 26%;"></div>
         <div class="cast-role">VOCAL / GUITAR</div>
         <div class="cast-name">晴人</div>
-        <p class="cast-desc">バンドの中心。<br>まっすぐで不器用な主人公。</p>
-      </article>
-      <article class="cast-card reveal">
-        <div class="cast-photo"><img src="assets/photos/cast-b.jpg" alt="陽平" style="object-position: 22% 38%;"></div>
-        <div class="cast-role">DRUMS</div>
-        <div class="cast-name">陽平</div>
-        <p class="cast-desc">ムードメーカー。<br>誰よりも音楽を楽しんでいる。</p>
-      </article>
-      <article class="cast-card reveal">
-        <div class="cast-photo"><img src="assets/photos/cast-d.jpg" alt="陸" style="object-position: 50% 28%;"></div>
-        <div class="cast-role">BASS</div>
-        <div class="cast-name">陸</div>
-        <p class="cast-desc">冷静でクール。<br>仲間を支える存在。</p>
+        <p class="cast-desc">天草で暮らす高校3年生。明るく単純で、思い立ったらすぐ行動するタイプ。茜との出会いをきっかけにバンドを始めるが、恋も音楽も将来も、思うようにはいかない。</p>
       </article>
       <article class="cast-card reveal">
         <div class="cast-photo"><img src="assets/photos/cast-c.jpg" alt="葵" style="object-position: 86% 24%;"></div>
         <div class="cast-role">CHILDHOOD FRIEND</div>
         <div class="cast-name">葵</div>
-        <p class="cast-desc">幼なじみ。不器用な想いを抱え、彼らを見守る。</p>
+        <p class="cast-desc">晴人の幼なじみ。口ではきついことを言いながらも、いつも晴人たちを見守っている。晴人への気持ちを抱えながら、自分の将来や天草に残る意味にも向き合っていく。</p>
       </article>
       <article class="cast-card reveal">
-        <div class="cast-photo"><img src="assets/photos/still-05.jpg" alt="茜" style="object-position: 90% 22%;"></div>
-        <div class="cast-role">TEACHER</div>
+        <div class="cast-photo"><img src="assets/photos/cast-d.jpg" alt="陸" style="object-position: 50% 28%;"></div>
+        <div class="cast-role">BASS</div>
+        <div class="cast-name">陸</div>
+        <p class="cast-desc">晴人たちの友人で、冷静なツッコミ役。将来は熊本を出て大学へ進むことも考えている。葵への想いを抱えながら、仲間との時間を大切にしている。</p>
+      </article>
+      <article class="cast-card reveal">
+        <div class="cast-photo"><img src="assets/photos/cast-b.jpg" alt="陽平" style="object-position: 22% 38%;"></div>
+        <div class="cast-role">DRUMS</div>
+        <div class="cast-name">陽平</div>
+        <p class="cast-desc">明るくお調子者のムードメーカー。モテたいという不純な動機でバンドに参加するが、仲間と過ごす時間の中で少しずつ本気になっていく。</p>
+      </article>
+      <article class="cast-card reveal">
+        <div class="cast-photo"><img src="assets/photos/still-05.jpg" alt="茜" style="object-position: 50% 20%;"></div>
+        <div class="cast-role">MUSIC TEACHER</div>
         <div class="cast-name">茜</div>
-        <p class="cast-desc">東京から来た音楽教師。晴人たちの夏を動かす存在。</p>
+        <p class="cast-desc">東京から天草へやってきた音楽教師。晴人たちに音楽の楽しさを教える存在。明るく振る舞う一方で、自身も過去の恋や夢に揺れている。</p>
+      </article>
+      <article class="cast-card reveal">
+        <div class="cast-photo"><img src="assets/photos/cast-a.jpg" alt="秀也" style="object-position: 50% 20%;"></div>
+        <div class="cast-role">LOCAL MUSICIAN</div>
+        <div class="cast-name">秀也</div>
+        <p class="cast-desc">天草で活動する人気バンドのボーカル。かつて東京でプロを目指していたが、夢破れて地元へ戻ってきた。茜との過去を抱えながら、晴人たちの音楽と向き合っていく。</p>
       </article>
     </div>
   </div>
