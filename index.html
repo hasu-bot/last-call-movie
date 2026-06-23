@@ -230,8 +230,20 @@
   .trailer-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 32%; transition: transform 1.6s var(--ease-out); }
   .trailer-thumb::after { content:""; position:absolute; inset:0; background: linear-gradient(120deg, rgba(6,33,47,0.34), rgba(6,33,47,0.06) 55%, rgba(6,33,47,0.28)); }
   .trailer-thumb:hover img { transform: scale(1.05); }
-  .play-btn { position: absolute; inset: 0; margin: auto; width: 92px; height: 92px; z-index: 2; transition: transform var(--dur) var(--ease); filter: drop-shadow(0 8px 22px rgba(6,33,47,0.4)); }
-  .trailer-thumb:hover .play-btn { transform: scale(1.08); }
+  .play-btn {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 76px; height: 76px; z-index: 3;
+    background: rgba(255,255,255,0.18);
+    border: 2px solid rgba(255,255,255,0.55);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+    pointer-events: none;
+  }
+  .play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+  .trailer-thumb:hover .play-btn { background: rgba(27,92,138,0.82); transform: translate(-50%, -50%) scale(1.1); }
   .trailer-copy .eyebrow { text-align: left; }
   .trailer-jp { font-family: var(--serif-display); font-weight: 600; font-size: 24px; color: var(--ink); margin: 22px 0 18px; letter-spacing: 0.06em; }
   .trailer-copy p { color: var(--ink-2); font-size: var(--t-body); line-height: 2.1; margin-bottom: 30px; }
@@ -409,8 +421,10 @@
     <div class="trailer-grid">
       <div class="trailer-thumb reveal" role="button" tabindex="0" aria-label="予告編を再生"
            data-trailer-id="yOuTtrSztFU" onclick="openTrailer(this)" onkeydown="if(event.key==='Enter'||event.key===' ')openTrailer(this)">
-        <img src="https://img.youtube.com/vi/yOuTtrSztFU/maxresdefault.jpg" alt="予告編サムネイル">
-        <img class="play-btn" src="assets/deco/play-button.png" alt="">
+        <img src="assets/photos/thumb.jpg" alt="予告編サムネイル">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+        </div>
       </div>
       <div class="trailer-copy reveal">
         <div class="trailer-jp">予告編</div>
