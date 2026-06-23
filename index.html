@@ -407,14 +407,15 @@
       <img class="deco-line" src="assets/deco/divider-sparkle.png" alt="">
     </div>
     <div class="trailer-grid">
-      <div class="trailer-thumb reveal" role="button" tabindex="0" aria-label="予告編を再生">
-        <img src="assets/photos/cast-c.jpg" alt="予告編サムネイル">
+      <div class="trailer-thumb reveal" role="button" tabindex="0" aria-label="予告編を再生"
+           data-trailer-id="yOuTtrSztFU" onclick="openTrailer(this)" onkeydown="if(event.key==='Enter'||event.key===' ')openTrailer(this)">
+        <img src="https://img.youtube.com/vi/yOuTtrSztFU/maxresdefault.jpg" alt="予告編サムネイル">
         <img class="play-btn" src="assets/deco/play-button.png" alt="">
       </div>
       <div class="trailer-copy reveal">
         <div class="trailer-jp">予告編</div>
         <p>風の匂い、海の音、<br>あの夏のきらめきが、ここに。</p>
-        <a href="#trailer" class="btn btn-ghost">予告編を見る<span class="arw">▶</span></a>
+        <button class="btn btn-ghost" onclick="openTrailer(document.querySelector('.trailer-thumb'))">予告編を見る<span class="arw">▶</span></button>
       </div>
     </div>
   </div>
@@ -660,6 +661,43 @@
     { x: 0, opacity: 1, duration: 1.1, ease: 'power4.out',
       scrollTrigger: { trigger: '.screening-grid', start: 'top 82%' } }
   );
+</script>
+
+<!-- ============ TRAILER MODAL ============ -->
+<div id="trailer-modal" style="
+  display:none; position:fixed; inset:0; z-index:9000;
+  background:rgba(6,21,31,0.92); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center;
+" onclick="if(event.target===this)closeTrailer()" role="dialog" aria-modal="true" aria-label="予告編">
+  <button onclick="closeTrailer()" style="
+    position:absolute; top:22px; right:28px;
+    background:none; border:none; color:#fff;
+    font-size:32px; line-height:1; cursor:pointer; opacity:0.8;
+  " aria-label="閉じる">×</button>
+  <div style="width:min(90vw,960px); aspect-ratio:16/9; position:relative;">
+    <iframe id="trailer-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen
+      style="position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:6px;">
+    </iframe>
+  </div>
+</div>
+
+<script>
+  function openTrailer(el) {
+    var id = el.dataset.trailerId;
+    var modal = document.getElementById('trailer-modal');
+    document.getElementById('trailer-iframe').src =
+      'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTrailer() {
+    document.getElementById('trailer-modal').style.display = 'none';
+    document.getElementById('trailer-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeTrailer();
+  });
 </script>
 </body>
 </html>
