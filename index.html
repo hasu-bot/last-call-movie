@@ -133,10 +133,10 @@
     padding: 90px var(--gutter) 0;
   }
   .hero-logo {
-    font-family: var(--serif-display); font-weight: 600;
-    font-size: clamp(54px, 11vw, 132px); letter-spacing: 0.14em;
-    color: #fff; line-height: 1; text-indent: 0.14em;
-    text-shadow: 0 3px 30px rgba(6,33,47,0.45), 0 1px 4px rgba(6,33,47,0.3);
+    width: clamp(240px, 40vw, 560px);
+    height: auto;
+    filter: drop-shadow(0 4px 28px rgba(6,33,47,0.5)) drop-shadow(0 1px 6px rgba(6,33,47,0.35));
+    will-change: transform, opacity;
   }
   .hero-sparkle { width: 150px; margin: 18px auto -6px; opacity: 0.9; }
   .hero-tagline {
@@ -358,7 +358,7 @@
 <section class="hero" id="hero" data-screen-label="HERO">
   <img class="hero-photo" src="assets/photos/hero-wide.jpg" alt="天草の海辺に立つ高校生バンド">
   <div class="hero-inner">
-    <h1 class="hero-logo">ラストコール</h1>
+    <img class="hero-logo" src="assets/logo.png" alt="ラストコール">
     <img class="hero-sparkle" src="assets/deco/divider-sparkle.png" alt="">
     <p class="hero-tagline">天草の海辺で、<br>高校最後の夏が鳴り出す。</p>
   </div>
@@ -557,16 +557,11 @@
     onLeaveBack: () => header.classList.remove('scrolled'),
   });
 
-  // ── Hero: char-by-char title ────────────────────────────────────────
-  const logo = document.querySelector('.hero-logo');
-  logo.innerHTML = [...logo.textContent].map(c =>
-    `<span class="ch">${c}</span>`
-  ).join('');
-
+  // ── Hero: logo image reveal ─────────────────────────────────────────
   gsap.timeline({ defaults: { ease: 'power4.out' } })
-    .fromTo('.ch',
-      { yPercent: 140, opacity: 0, rotateZ: 3 },
-      { yPercent: 0, opacity: 1, rotateZ: 0, stagger: 0.06, duration: 1.2 }, 0.1)
+    .fromTo('.hero-logo',
+      { y: 30, opacity: 0, scale: 0.94, filter: 'blur(6px) drop-shadow(0 4px 28px rgba(6,33,47,0.5)) drop-shadow(0 1px 6px rgba(6,33,47,0.35))' },
+      { y: 0, opacity: 1, scale: 1, filter: 'blur(0px) drop-shadow(0 4px 28px rgba(6,33,47,0.5)) drop-shadow(0 1px 6px rgba(6,33,47,0.35))', duration: 1.4 }, 0.1)
     .fromTo('.hero-sparkle',
       { scaleX: 0, opacity: 0, transformOrigin: 'center' },
       { scaleX: 1, opacity: 1, duration: 0.9, ease: 'expo.out' }, 0.8)
