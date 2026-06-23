@@ -320,6 +320,16 @@
   .scr-card .btn { margin-top: 22px; width: 100%; justify-content: center; }
   @media (max-width: 820px){ .screening-grid { grid-template-columns: 1fr; } }
 
+  /* ============ CROWDFUNDING ============ */
+  .crowdfunding { background: var(--sea-950); text-align: center; overflow: hidden; }
+  .crowdfunding .eyebrow { color: var(--sea-300); }
+  .crowdfunding .eyebrow-jp { color: rgba(234,243,247,0.4); }
+  .cfd-body {
+    max-width: 600px; margin: clamp(36px,5vw,52px) auto clamp(40px,5vw,56px);
+    font-family: var(--serif); font-size: var(--t-body-l);
+    line-height: 2.3; color: var(--on-dark-mute); letter-spacing: 0.04em;
+  }
+
   /* ============ FOOTER ============ */
   .footer { position: relative; background: var(--sea-950); padding: clamp(70px,8vw,110px) 0 48px; text-align: center; }
   .footer-strip { position: absolute; top: -1px; left: 0; width: 100%; height: 70px; object-fit: cover; object-position: center top; opacity: 0.3; transform: scaleY(-1); pointer-events: none; filter: invert(1); }
@@ -410,12 +420,12 @@
 <header class="site-header" id="header">
   <a href="#hero" class="brand-mark">ラストコール</a>
   <nav class="nav">
-    <a href="#concept">CONCEPT</a>
-    <a href="#about">ABOUT</a>
+    <a href="#intro">INTRO</a>
     <a href="#story">STORY</a>
     <a href="#trailer">TRAILER</a>
     <a href="#cast">CAST</a>
     <a href="#gallery">GALLERY</a>
+    <a href="#crowdfunding">SUPPORT</a>
     <a href="#screening">SCREENING</a>
   </nav>
   <img class="header-social" src="assets/deco/social-icons.png" alt="SNS">
@@ -436,32 +446,16 @@
   <div class="scroll-cue"></div>
 </section>
 
-<!-- ============ 02 CONCEPT ============ -->
-<section class="concept pad" id="concept" data-screen-label="CONCEPT">
-  <img class="splash" src="assets/deco/splash-cloud.png" alt="" style="top:-30px; left:-40px; width:300px;">
-  <div class="wrap concept-grid">
-    <div class="concept-copy reveal">
-      <div class="eyebrow">CONCEPT<span class="eyebrow-jp">コンセプト</span></div>
-      <h2 class="concept-headline">天草の海辺で、<br>高校最後の夏が<br>鳴り出す。</h2>
-      <p class="concept-body">眩しいほどの青、きらめく海、鳴り響く音楽。<br>かけがえのない仲間と、はじめての恋、<br>そして、まだ見えない未来への不安。<br><br>すべてを抱えた、<br>あの夏の記憶が、いまよみがえる——。</p>
-    </div>
-    <div class="photo-frame concept-photo reveal">
-      <img src="assets/photos/still-06.jpg" alt="天草の海">
-    </div>
-  </div>
-</section>
-
-<!-- ============ 03 ABOUT THE MOVIE ============ -->
-<section class="about pad" id="about" data-screen-label="ABOUT">
+<!-- ============ 02 INTRODUCTION ============ -->
+<section class="about pad" id="intro" data-screen-label="INTRO">
   <div class="wrap about-grid">
     <div class="photo-frame about-photo reveal">
-      <img src="assets/photos/still-05.jpg" alt="バンドのメンバー">
+      <img src="assets/photos/still-06.jpg" alt="天草の海">
     </div>
     <div class="about-copy reveal">
-      <div class="eyebrow">ABOUT THE MOVIE<span class="eyebrow-jp">作品について</span></div>
-      <h3 class="about-title">青春音楽映画『ラストコール』</h3>
-      <p class="about-body">熊本・天草の海辺を舞台に、バンドに青春を懸ける高校生たちの姿を瑞々しく描くオリジナルストーリー。</p>
-      <p class="about-body">音楽、恋、友情、そして進路。それぞれの想いがぶつかり合いながら、「自分たちの音」を探していく、ひと夏の物語。</p>
+      <div class="eyebrow">INTRODUCTION<span class="eyebrow-jp">イントロダクション</span></div>
+      <p class="about-body">眩しいほどの青、きらめく海、鳴り響く音楽。</p>
+      <p class="about-body">熊本・天草の海辺を舞台に、バンドに青春を懸ける高校生たちの姿を描いた短編映画。音楽、恋、友情、そして進路——それぞれの想いがぶつかり合いながら、「自分たちの音」を探していく、ひと夏の物語。</p>
     </div>
   </div>
 </section>
@@ -570,6 +564,19 @@
   </div>
 </section>
 
+<!-- ============ 07 CROWDFUNDING ============ -->
+<section class="crowdfunding pad" id="crowdfunding" data-screen-label="CROWDFUNDING">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">SUPPORT<span class="eyebrow-jp">この映画を応援する</span></div>
+    </div>
+    <p class="cfd-body reveal">この映画は、天草で生まれた物語をもっと多くの人に届けるため、<br>クラウドファンディングを実施しています。<br>あなたの支援が、この夏を動かす力になります。</p>
+    <div class="center reveal">
+      <a href="#crowdfunding" class="btn btn-primary">クラウドファンディングページへ<span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 08 SCREENING ============ -->
 <section class="screening pad" id="screening" data-screen-label="SCREENING">
   <div class="wrap screening-grid">
@@ -595,12 +602,12 @@
   <div class="wrap">
     <div class="footer-logo">ラストコール</div>
     <nav class="footer-nav">
-      <a href="#concept">CONCEPT</a>
-      <a href="#about">ABOUT</a>
+      <a href="#intro">INTRODUCTION</a>
       <a href="#story">STORY</a>
       <a href="#trailer">TRAILER</a>
       <a href="#cast">CAST</a>
       <a href="#gallery">GALLERY</a>
+      <a href="#crowdfunding">SUPPORT</a>
       <a href="#screening">SCREENING</a>
     </nav>
     <img class="footer-social" src="assets/deco/social-icons.png" alt="SNS">
@@ -648,19 +655,6 @@
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
   });
 
-  // ── Concept headline: line-by-line reveal ───────────────────────────
-  const hl = document.querySelector('.concept-headline');
-  if (hl) {
-    hl.innerHTML = hl.innerHTML.split('<br>').map(l =>
-      `<span class="hl-wrap"><em class="hl-inner">${l}</em></span>`
-    ).join('');
-    gsap.fromTo('.hl-inner',
-      { yPercent: 110 },
-      { yPercent: 0, stagger: 0.2, duration: 1.15, ease: 'power3.out',
-        scrollTrigger: { trigger: hl, start: 'top 80%' } }
-    );
-  }
-
   // ── Eyebrow clip-path wipe ──────────────────────────────────────────
   gsap.utils.toArray('.eyebrow').forEach(el => {
     gsap.fromTo(el,
@@ -672,7 +666,7 @@
 
   // ── General reveals ─────────────────────────────────────────────────
   const skipEls = new Set([
-    ...document.querySelectorAll('.cast-card, .g-item, .concept-headline, .trailer-thumb'),
+    ...document.querySelectorAll('.cast-card, .g-item, .trailer-thumb'),
   ]);
   gsap.utils.toArray('.reveal').forEach(el => {
     if (skipEls.has(el)) return;
