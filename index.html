@@ -176,6 +176,46 @@
   }
   @keyframes cue { 0%{transform:translateY(-100%);} 60%,100%{transform:translateY(100%);} }
 
+  /* ============ QUOTE BREAK ============ */
+  .quote-break {
+    position: relative; height: 88vh; min-height: 520px;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+  }
+  .qb-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 38%;
+  }
+  .quote-break::before {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(6,21,31,0.28) 0%,
+      rgba(6,21,31,0.52) 60%,
+      rgba(6,21,31,0.78) 100%
+    );
+  }
+  .qb-inner {
+    position: relative; z-index: 2;
+    text-align: center; padding-inline: var(--gutter);
+    max-width: 820px;
+  }
+  .qb-label {
+    font-family: var(--sans); font-weight: 500; font-size: 11px;
+    letter-spacing: 0.4em; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; margin-bottom: 36px;
+  }
+  .qb-text {
+    font-family: var(--serif-display); font-weight: 500;
+    font-size: clamp(22px, 3.6vw, 50px); line-height: 2.0;
+    letter-spacing: 0.1em; color: #fff;
+    text-shadow: 0 2px 28px rgba(6,21,31,0.6);
+  }
+  .qb-rule {
+    width: 1px; height: 60px;
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0));
+    margin: 44px auto 0;
+  }
+
   /* ============ CONCEPT ============ */
   .concept { background: #fff; overflow: hidden; }
   .concept-grid {
@@ -217,8 +257,23 @@
   .about-body { color: var(--ink-2); font-size: var(--t-body-l); line-height: 2.3; }
   .about-body + .about-body { margin-top: 1.6em; }
 
+  /* ============ INTRO ============ */
+  .intro-headline {
+    font-family: var(--serif-display); font-weight: 500;
+    font-size: clamp(28px, 4.2vw, 52px); line-height: 1.6;
+    letter-spacing: 0.06em; color: var(--ink);
+    margin: 30px 0 32px;
+  }
+
   /* ============ STORY ============ */
-  .story { background: var(--sea-50); overflow: hidden; }
+  .story { background: var(--sea-950); overflow: hidden; }
+  .story .eyebrow { color: var(--sea-300); }
+  .story .eyebrow-jp { color: rgba(234,243,247,0.35); }
+  .story-lead { color: rgba(234,243,247,0.55); }
+  .act { border-top-color: rgba(255,255,255,0.08); }
+  .act:last-child { border-bottom-color: rgba(255,255,255,0.08); }
+  .act-title { color: var(--sea-300); }
+  .act-body { color: var(--on-dark-mute); }
   .story-lead {
     max-width: 640px; margin: clamp(30px, 4vw, 46px) auto 0; text-align: center;
     font-family: var(--serif-display); font-weight: 500;
@@ -474,14 +529,25 @@
   <div class="scroll-cue"></div>
 </section>
 
-<!-- ============ 02 INTRODUCTION ============ -->
+<!-- ============ 02 QUOTE BREAK ============ -->
+<section class="quote-break" id="quote-break">
+  <img class="qb-photo" src="assets/photos/still-04.jpg" alt="">
+  <div class="qb-inner">
+    <p class="qb-label">LAST CALL — 2026</p>
+    <p class="qb-text">うまくいかなくても、<br>この夏だけは終わらせたくなかった。</p>
+    <div class="qb-rule"></div>
+  </div>
+</section>
+
+<!-- ============ 03 INTRODUCTION ============ -->
 <section class="about pad" id="intro" data-screen-label="INTRO">
   <div class="wrap about-grid">
     <div class="photo-frame about-photo reveal">
       <img src="assets/photos/still-06.jpg" alt="天草の海">
     </div>
     <div class="about-copy reveal">
-      <div class="eyebrow">INTRODUCTION<span class="eyebrow-jp">この夏、僕らの音が鳴り出す。</span></div>
+      <div class="eyebrow">INTRODUCTION<span class="eyebrow-jp">イントロダクション</span></div>
+      <h2 class="intro-headline">この夏、<br>僕らの音が鳴り出す。</h2>
       <p class="about-body">天草の海辺で暮らす高校生たちが、恋や進路、音楽にぶつかりながら、高校最後の夏を駆け抜けていく青春音楽映画。</p>
       <p class="about-body">うまくいかないことばかりでも、それでももう一度、ステージに立つ。——これは、何者でもなかった彼らが、自分たちの音を見つけるまでの物語。</p>
     </div>
@@ -687,6 +753,27 @@
     .fromTo('.scroll-cue',
       { opacity: 0, scaleY: 0, transformOrigin: 'top' },
       { opacity: 1, scaleY: 1, duration: 0.8 }, 2.2);
+
+  // ── Quote break: parallax + text reveal ────────────────────────────
+  gsap.to('.qb-photo', {
+    yPercent: 22, ease: 'none',
+    scrollTrigger: { trigger: '.quote-break', start: 'top bottom', end: 'bottom top', scrub: true }
+  });
+  gsap.fromTo('.qb-label',
+    { opacity: 0, letterSpacing: '0.7em' },
+    { opacity: 1, letterSpacing: '0.4em', duration: 1.2, ease: 'power3.out',
+      scrollTrigger: { trigger: '.qb-inner', start: 'top 75%' } }
+  );
+  gsap.fromTo('.qb-text',
+    { y: 50, opacity: 0, filter: 'blur(10px)' },
+    { y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.6, ease: 'power4.out',
+      scrollTrigger: { trigger: '.qb-inner', start: 'top 75%' }, delay: 0.2 }
+  );
+  gsap.fromTo('.qb-rule',
+    { scaleY: 0, transformOrigin: 'top' },
+    { scaleY: 1, duration: 1.2, ease: 'power3.out',
+      scrollTrigger: { trigger: '.qb-inner', start: 'top 75%' }, delay: 0.9 }
+  );
 
   // ── Hero photo parallax ─────────────────────────────────────────────
   gsap.to('.hero-photo', {
