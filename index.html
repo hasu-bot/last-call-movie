@@ -78,13 +78,15 @@
     box-shadow: 0 1px 0 rgba(27,92,138,0.12);
     padding-block: 12px;
   }
-  .brand-mark {
-    font-family: var(--serif-display);
-    font-weight: 600; font-size: 22px; letter-spacing: 0.16em;
-    color: #fff; text-shadow: 0 1px 12px rgba(6,33,47,0.4);
-    transition: color var(--dur) var(--ease), text-shadow var(--dur) var(--ease);
+  .brand-mark { display: flex; align-items: center; }
+  .brand-logo {
+    height: 30px; width: auto;
+    filter: drop-shadow(0 1px 8px rgba(6,33,47,0.35));
+    transition: filter var(--dur) var(--ease);
   }
-  .scrolled .brand-mark { color: var(--ink); text-shadow: none; }
+  .scrolled .brand-logo {
+    filter: brightness(0);
+  }
   .nav { display: flex; align-items: center; gap: clamp(14px, 1.8vw, 30px); }
   .nav a {
     font-family: var(--sans); font-weight: 500; font-size: 12px;
@@ -501,7 +503,7 @@
 
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="header">
-  <a href="#hero" class="brand-mark">ラストコール</a>
+  <a href="#hero" class="brand-mark"><img class="brand-logo" src="assets/logo.png" alt="ラストコール"></a>
   <nav class="nav">
     <a href="#intro">INTRO</a>
     <a href="#story">STORY</a>
