@@ -19,7 +19,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
   body {
-    background: var(--paper);
+    background: #fff;
     color: var(--fg);
     font-family: var(--serif);
     overflow-x: hidden;
@@ -32,24 +32,34 @@
 
   /* ---------- section eyebrow ---------- */
   .eyebrow {
-    font-family: var(--serif-display);
-    font-weight: 500;
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--sans);
+    font-weight: 600;
     color: var(--sun-600);
-    letter-spacing: 0.18em;
-    line-height: 1.1;
-    font-size: clamp(26px, 3.6vw, 46px);
+    letter-spacing: 0.28em;
+    line-height: 1;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block; flex-shrink: 0;
+    width: 24px; height: 1px;
+    background: var(--sun-600); opacity: 0.7;
   }
   .eyebrow-jp {
     display: block;
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: var(--t-small);
-    letter-spacing: 0.34em;
-    color: var(--fg-faint);
-    margin-top: 14px;
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(16px, 2.2vw, 22px);
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin-top: 16px;
+    line-height: 1.8;
   }
   .center { text-align: center; }
-  .center .eyebrow-jp { letter-spacing: 0.4em; }
+  .center .eyebrow { justify-content: center; }
+  .center .eyebrow::before { display: none; }
   .deco-line { display: block; height: 16px; margin: 20px auto 0; }
   .deco-line.center { margin-inline: auto; }
 
@@ -124,8 +134,7 @@
   .hero-inner {
     position: absolute; inset: 0; z-index: 3;
     display: flex; align-items: center; justify-content: center;
-    /* タグラインが別位置になったので logo だけセンタリング */
-    padding-bottom: clamp(140px, 22vh, 220px);
+    padding-bottom: clamp(120px, 18vh, 180px);
   }
   .hero-logo {
     width: clamp(200px, 32vw, 460px);
@@ -133,14 +142,18 @@
     filter: drop-shadow(0 4px 32px rgba(6,21,31,0.55)) drop-shadow(0 1px 8px rgba(6,21,31,0.3));
     will-change: transform, opacity;
   }
-  .hero-tagline {
-    position: absolute; bottom: clamp(130px, 20vh, 200px);
-    left: 0; right: 0; z-index: 3;
-    text-align: center;
-    color: rgba(255,255,255,0.92);
+  /* 縦書きキャッチコピー */
+  .hero-vert {
+    position: absolute;
+    right: clamp(28px, 6vw, 72px);
+    top: 50%; transform: translateY(-50%);
+    z-index: 3;
+    writing-mode: vertical-rl;
     font-family: var(--serif-display); font-weight: 400;
-    font-size: clamp(15px, 2vw, 24px); line-height: 2.2; letter-spacing: 0.18em;
-    text-shadow: 0 2px 20px rgba(38,16,4,0.55);
+    font-size: clamp(13px, 1.5vw, 17px);
+    letter-spacing: 0.38em; line-height: 1;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 1px 14px rgba(6,21,31,0.55);
   }
   .hero-meta {
     position: absolute; bottom: clamp(36px, 7vh, 72px); left: 0; right: 0; z-index: 3;
@@ -233,7 +246,7 @@
   }
 
   /* ============ ABOUT / INTRO ============ */
-  .about { background: var(--paper); }
+  .about { background: #fff; }
   .about-grid {
     display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(36px, 6vw, 80px);
     align-items: center;
@@ -265,8 +278,9 @@
     background: linear-gradient(to bottom, transparent, rgba(6,21,31,0.6));
     pointer-events: none;
   }
-  .story .eyebrow { color: var(--sea-300); }
-  .story .eyebrow-jp { color: rgba(234,243,247,0.28); }
+  .story .eyebrow { color: var(--sun-300, #EFBB95); }
+  .story .eyebrow::before { background: var(--sun-300, #EFBB95); }
+  .story .eyebrow-jp { color: rgba(234,243,247,0.82); }
   .story-lead {
     max-width: 600px; margin: clamp(24px, 3.5vw, 40px) auto 0; text-align: center;
     font-family: var(--serif-display); font-weight: 400;
@@ -296,7 +310,7 @@
   }
 
   /* ============ TRAILER ============ */
-  .trailer { background: linear-gradient(to bottom, var(--paper-3) 0%, var(--paper) 100%); }
+  .trailer { background: #fafafa; }
   .trailer-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(34px, 5vw, 70px); align-items: center; margin-top: clamp(40px,5vw,64px); }
   .trailer-thumb {
     position: relative; aspect-ratio: 16/9; border-radius: var(--r-md); overflow: hidden;
@@ -340,7 +354,7 @@
   .btn-ghost:hover { background: var(--sun-600); border-color: var(--sun-600); color: #fff; }
 
   /* ============ CAST ============ */
-  .cast { background: var(--paper-3); overflow: hidden; }
+  .cast { background: #fafafa; overflow: hidden; }
   .cast-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 32px);
     margin-top: clamp(36px, 5vw, 60px);
@@ -358,7 +372,7 @@
   @media (max-width: 560px){ .cast-grid { grid-template-columns: repeat(2, 1fr); } }
 
   /* ============ GALLERY ============ */
-  .gallery { background: linear-gradient(to bottom, var(--paper-3), var(--paper)); }
+  .gallery { background: #fff; }
   .gallery-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(8px, 1vw, 14px);
     margin-top: clamp(32px, 4.5vw, 52px);
@@ -431,8 +445,9 @@
 
   /* ============ CROWDFUNDING ============ */
   .crowdfunding { background: var(--sea-950); text-align: center; overflow: hidden; }
-  .crowdfunding .eyebrow { color: var(--sea-300); }
-  .crowdfunding .eyebrow-jp { color: rgba(234,243,247,0.4); }
+  .crowdfunding .eyebrow { color: var(--sun-300, #EFBB95); }
+  .crowdfunding .eyebrow::before { background: var(--sun-300, #EFBB95); }
+  .crowdfunding .eyebrow-jp { color: rgba(234,243,247,0.75); }
   .cfd-body {
     max-width: 600px; margin: clamp(36px,5vw,52px) auto clamp(40px,5vw,56px);
     font-family: var(--serif); font-size: var(--t-body-l);
@@ -468,9 +483,9 @@
     /* ヒーロー */
     .hero { min-height: 100svh; }
     .hero-logo { width: clamp(180px, 68vw, 300px); }
-    .hero-tagline {
-      font-size: 14px; letter-spacing: 0.12em; line-height: 2.0;
-      bottom: clamp(100px, 17vh, 150px);
+    .hero-vert {
+      font-size: 12px; letter-spacing: 0.28em;
+      right: clamp(14px, 4vw, 28px);
     }
     .hero-date { font-size: 26px; }
     .hero-venue { font-size: 11px; letter-spacing: 0.22em; }
@@ -552,7 +567,7 @@
   <div class="hero-inner">
     <img class="hero-logo" src="assets/logo.png" alt="ラストコール">
   </div>
-  <p class="hero-tagline">天草の海辺で、<br>高校最後の夏が鳴り出す。</p>
+  <p class="hero-vert">天草の海辺で、高校最後の夏が鳴り出す。</p>
   <div class="hero-meta">
     <div class="hero-date">2026.8.29<span class="sat">SAT</span></div>
     <div class="hero-venue">熊本 ・ 電気館</div>
@@ -772,9 +787,9 @@
     .fromTo('.hero-logo',
       { y: 30, opacity: 0, scale: 0.94, filter: 'blur(6px) drop-shadow(0 4px 32px rgba(6,21,31,0.55))' },
       { y: 0, opacity: 1, scale: 1, filter: 'blur(0px) drop-shadow(0 4px 32px rgba(6,21,31,0.55))', duration: 1.4 }, 0.1)
-    .fromTo('.hero-tagline',
-      { y: 28, opacity: 0, filter: 'blur(6px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.2 }, 0.9)
+    .fromTo('.hero-vert',
+      { x: 20, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.4 }, 0.9)
     .fromTo('.hero-meta',
       { y: 24, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.0 }, 1.4)
