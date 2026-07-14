@@ -8,12 +8,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="映画『ラストコール』公式サイト">
 <meta property="og:description" content="天草を舞台にした青春・音楽映画『ラストコール』公式サイト。上映情報・キャスト・スチール写真など。">
-<meta property="og:image" content="assets/photos/key-visual.jpg">
+<meta property="og:url" content="https://last-call-movie.vercel.app/">
+<meta property="og:image" content="https://last-call-movie.vercel.app/assets/photos/key-visual.jpg">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="映画『ラストコール』公式サイト">
 <meta name="twitter:description" content="天草を舞台にした青春・音楽映画『ラストコール』公式サイト。">
-<meta name="twitter:image" content="assets/photos/key-visual.jpg">
+<meta name="twitter:image" content="https://last-call-movie.vercel.app/assets/photos/key-visual.jpg">
 <link rel="stylesheet" href="assets/colors_and_type.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -462,6 +463,11 @@
   .footer-nav a { font-family: var(--sans); font-weight: 500; font-size: 11px; letter-spacing: 0.2em; color: rgba(255,255,255,0.45); transition: color var(--dur) var(--ease); }
   .footer-nav a:hover { color: var(--sea-300); }
   .footer-social { height: 30px; margin: 0 auto 30px; opacity: 0.6; filter: invert(1) brightness(2); }
+  .footer-yolo { margin: 0 auto 26px; }
+  .footer-yolo-brand { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+  .footer-yolo-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; }
+  .footer-yolo-links a { font-family: var(--sans); font-weight: 500; font-size: 11px; letter-spacing: 0.16em; color: rgba(255,255,255,0.45); transition: color var(--dur) var(--ease); }
+  .footer-yolo-links a:hover { color: var(--sea-300); }
   .footer-copy { font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; color: rgba(255,255,255,0.25); }
 
   /* ============ RESPONSIVE ============ */
@@ -762,6 +768,15 @@
       <a href="#screening">SCREENING</a>
     </nav>
     <img class="footer-social" src="assets/deco/social-icons.png" alt="SNS">
+    <div class="footer-yolo">
+      <span class="footer-yolo-brand">Creative YOLO — 熊本のクリエイティブコミュニティ</span>
+      <nav class="footer-yolo-links">
+        <a href="https://yolo-official.vercel.app/" target="_blank" rel="noopener">公式サイト</a>
+        <a href="https://line.me/R/ti/p/@140irxqh" target="_blank" rel="noopener">LINE で参加</a>
+        <a href="https://hasu-bot.github.io/yolo-film-festival/" target="_blank" rel="noopener">あなたのまちの映画祭</a>
+        <a href="https://yolo-members.vercel.app/" target="_blank" rel="noopener">YOLO HUB</a>
+      </nav>
+    </div>
     <div class="footer-copy">© 2026 映画『ラストコール』製作委員会</div>
   </div>
 </footer>
