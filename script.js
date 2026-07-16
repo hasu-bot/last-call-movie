@@ -1,18 +1,16 @@
-const scrollRoot = document.querySelector("#scrollRoot");
 const progress = document.querySelector("#progress");
 const toTop = document.querySelector("#toTop");
 const daysLeft = document.querySelector("#daysLeft");
+const siteHeader = document.querySelector("#siteHeader");
+const menuButton = document.querySelector("#menuButton");
+const siteNav = document.querySelector("#siteNav");
 const charactersRoot = document.querySelector("#characters");
-const galleryRoot = document.querySelector("#gallery");
-const trailerModal = document.querySelector("#trailerModal");
-const trailerFrame = document.querySelector("#trailerFrame");
+const galleryRoot = document.querySelector("#galleryGrid");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightboxImage");
-const trailerEmbedUrl = "https://www.youtube.com/embed/yOuTtrSztFU?autoplay=1&rel=0";
 
 const characters = [
   {
-    id: "haruto",
     role: "VOCAL & GUITAR",
     name: "南 晴人",
     actor: "田川隼嗣",
@@ -20,7 +18,6 @@ const characters = [
     image: "/img/char-haruto.jpg"
   },
   {
-    id: "aoi",
     role: "CHILDHOOD FRIEND",
     name: "牧野 葵",
     actor: "中村瑠衣",
@@ -28,7 +25,6 @@ const characters = [
     image: "/img/char-aoi.jpg"
   },
   {
-    id: "riku",
     role: "BASS",
     name: "篠原 陸",
     actor: "守永莉音",
@@ -36,7 +32,6 @@ const characters = [
     image: "/img/char-riku.jpg"
   },
   {
-    id: "yohei",
     role: "DRUMS",
     name: "日野 陽平",
     actor: "濱田敏生",
@@ -44,27 +39,25 @@ const characters = [
     image: "/img/char-yohei.jpg"
   },
   {
-    id: "hideya",
     role: "MUSICIAN",
     name: "榊 秀也",
     actor: "三島竜太",
-    description: "天草で活動するミュージシャン。晴人たちの前に現れ、彼らの音楽に大きな影響を与える。",
+    description: "天草で活動するミュージシャン。晴人たちの音楽に大きな影響を与える。",
     image: "/img/char-hideya.jpg"
   },
   {
-    id: "akane",
     role: "TEACHER",
     name: "白石 茜",
     actor: "美紗都",
-    description: "東京から来た音楽教師。晴人たちに音楽の楽しさを教え、彼らの夏を動かしていく。",
+    description: "東京から来た音楽教師。音楽の楽しさを教え、彼らの夏を動かしていく。",
     image: "/img/char-akane.jpg"
   }
 ];
 
 const galleryItems = [
   { image: "/img/gallery-1.jpg", className: "wide" },
-  { image: "/img/gallery-2.jpg", className: "wide" },
-  { image: "/img/gallery-3.jpg", className: "wide" },
+  { image: "/img/gallery-2.jpg", className: "" },
+  { image: "/img/gallery-3.jpg", className: "" },
   { image: "/img/gallery-4.jpg", className: "wide" },
   { image: "/img/gallery-6.jpg", className: "" },
   { image: "/img/gallery-7.jpg", className: "" },
@@ -81,26 +74,28 @@ function renderCharacters() {
   charactersRoot.replaceChildren(
     ...characters.map((character) => {
       const card = document.createElement("article");
-      card.className = "card reveal";
+      card.className = "cast-card reveal";
 
-      const image = document.createElement("span");
-      if (character.image) {
-        image.className = "photo";
-        image.style.backgroundImage = `url('${character.image}')`;
-      } else {
-        image.className = "photo-empty";
-        image.innerHTML = `<span>STILL — ${character.name}</span>`;
-      }
+      const photo = document.createElement("div");
+      photo.className = "cast-photo";
+      photo.style.backgroundImage = `url('${character.image}')`;
+      photo.setAttribute("role", "img");
+      photo.setAttribute("aria-label", `${character.name}役 ${character.actor}`);
 
-      const body = document.createElement("span");
-      body.innerHTML = `
-        <span class="role">${character.role}</span>
-        <span class="name">${character.name}</span>
-        ${character.actor ? `<span class="actor">${character.actor}</span>` : ""}
-        <span class="description">${character.description}</span>
-      `;
+      const role = document.createElement("span");
+      role.className = "cast-role";
+      role.textContent = character.role;
 
-      card.append(image, body);
+      const name = document.createElement("h3");
+      name.append(document.createTextNode(character.name));
+      const actor = document.createElement("small");
+      actor.textContent = character.actor;
+      name.append(actor);
+
+      const description = document.createElement("p");
+      description.textContent = character.description;
+
+      card.append(photo, role, name, description);
       return card;
     })
   );
@@ -108,12 +103,12 @@ function renderCharacters() {
 
 function renderGallery() {
   galleryRoot.replaceChildren(
-    ...galleryItems.map((item) => {
+    ...galleryItems.map((item, index) => {
       const button = document.createElement("button");
-      button.className = `photo reveal ${item.className}`.trim();
+      button.className = `gallery-item reveal ${item.className}`.trim();
       button.type = "button";
       button.style.backgroundImage = `url('${item.image}')`;
-      button.setAttribute("aria-label", "ギャラリー画像を拡大表示");
+      button.setAttribute("aria-label", `ギャラリー画像 ${index + 1} を拡大表示`);
       button.addEventListener("click", () => openLightbox(item.image));
       return button;
     })
@@ -121,35 +116,30 @@ function renderGallery() {
 }
 
 function syncScrollEffects() {
-  const max = scrollRoot.scrollHeight - scrollRoot.clientHeight;
-  const percent = max > 0 ? Math.min(100, (scrollRoot.scrollTop / max) * 100) : 0;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
   progress.style.width = `${percent}%`;
-  toTop.classList.toggle("show", percent > 5);
-
-  scrollRoot.querySelectorAll("[data-parallax]").forEach((element) => {
-    const factor = Number.parseFloat(element.dataset.parallax || "0");
-    element.style.transform = `translateY(${scrollRoot.scrollTop * factor}px)`;
-  });
+  toTop.classList.toggle("show", window.scrollY > 520);
+  siteHeader.classList.toggle("scrolled", window.scrollY > 24);
 }
 
-function openModal() {
-  trailerFrame.src = trailerEmbedUrl;
-  trailerModal.hidden = false;
-}
-
-function closeModal() {
-  trailerModal.hidden = true;
-  trailerFrame.src = "";
+function setMenu(open) {
+  siteHeader.classList.toggle("open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
 }
 
 function openLightbox(image) {
-  lightboxImage.style.backgroundImage = `url('${image}')`;
+  lightboxImage.src = image;
   lightbox.hidden = false;
+  document.body.classList.add("modal-open");
+  lightbox.querySelector(".lightbox-close").focus();
 }
 
 function closeLightbox() {
+  if (lightbox.hidden) return;
   lightbox.hidden = true;
-  lightboxImage.style.backgroundImage = "";
+  lightboxImage.src = "";
+  document.body.classList.remove("modal-open");
 }
 
 renderCharacters();
@@ -161,22 +151,25 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in");
+        observer.unobserve(entry.target);
       }
     });
   },
-  { root: scrollRoot, threshold: 0.18 }
+  { rootMargin: "0px 0px -8%", threshold: 0.12 }
 );
 
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-scrollRoot.addEventListener("scroll", syncScrollEffects, { passive: true });
-toTop.addEventListener("click", () => scrollRoot.scrollTo({ top: 0, behavior: "smooth" }));
-document.querySelectorAll("[data-open-modal]").forEach((button) => button.addEventListener("click", openModal));
-document.querySelectorAll("[data-close-modal]").forEach((button) => button.addEventListener("click", closeModal));
+window.addEventListener("scroll", syncScrollEffects, { passive: true });
+window.addEventListener("resize", syncScrollEffects, { passive: true });
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+menuButton.addEventListener("click", () => setMenu(!siteHeader.classList.contains("open")));
+siteNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
 document.querySelectorAll("[data-close-lightbox]").forEach((button) => button.addEventListener("click", closeLightbox));
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    closeModal();
+    setMenu(false);
     closeLightbox();
   }
 });
+
 syncScrollEffects();
