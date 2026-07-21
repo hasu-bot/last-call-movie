@@ -16,6 +16,7 @@ const characters = [
     role: "VOCAL & GUITAR",
     name: "南 晴人",
     actor: "田川隼嗣",
+    instagram: "https://www.instagram.com/shunji.kimagure/",
     description: "まっすぐで不器用な主人公。音楽と出会い、高校最後の夏を駆け抜ける。",
     image: "/img/char-haruto.jpg"
   },
@@ -24,6 +25,7 @@ const characters = [
     role: "CHILDHOOD FRIEND",
     name: "牧野 葵",
     actor: "中村瑠衣",
+    instagram: "https://www.instagram.com/nakarui0216/",
     description: "晴人の幼なじみ。不器用な想いを抱えながら、いつもそばで見守っている。",
     image: "/img/char-aoi.jpg"
   },
@@ -32,6 +34,7 @@ const characters = [
     role: "BASS",
     name: "篠原 陸",
     actor: "守永莉音",
+    instagram: "https://www.instagram.com/rion09_09/",
     description: "冷静でクールなベーシスト。仲間を支えながら、自分の進路にも向き合っていく。",
     image: "/img/char-riku.jpg"
   },
@@ -40,6 +43,7 @@ const characters = [
     role: "DRUMS",
     name: "日野 陽平",
     actor: "濱田敏生",
+    instagram: "https://www.instagram.com/hayase.0924/",
     description: "バンドのムードメーカー。誰よりも音楽を楽しみ、仲間を明るく引っ張る存在。",
     image: "/img/char-yohei.jpg"
   },
@@ -48,6 +52,7 @@ const characters = [
     role: "MUSICIAN",
     name: "榊 秀也",
     actor: "三島竜太",
+    instagram: "https://www.instagram.com/ryuta3island321/",
     description: "天草で活動するミュージシャン。晴人たちの前に現れ、彼らの音楽に大きな影響を与える。",
     image: "/img/char-hideya.jpg"
   },
@@ -56,6 +61,7 @@ const characters = [
     role: "TEACHER",
     name: "白石 茜",
     actor: "美紗都",
+    instagram: "https://www.instagram.com/c5.kumq.c5/",
     description: "東京から来た音楽教師。晴人たちに音楽の楽しさを教え、彼らの夏を動かしていく。",
     image: "/img/char-akane.jpg"
   }
@@ -98,6 +104,11 @@ function renderCharacters() {
         <span class="name">${character.name}</span>
         ${character.actor ? `<span class="actor">${character.actor}</span>` : ""}
         <span class="description">${character.description}</span>
+        ${
+          character.instagram
+            ? `<a class="cast-insta" href="${character.instagram}" target="_blank" rel="noopener">Instagram</a>`
+            : ""
+        }
       `;
 
       card.append(image, body);

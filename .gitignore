@@ -1,2 +1,5 @@
 .vercel/
 .DS_Store
+
+# ローカル用の開発サーバ設定
+.claude/
