@@ -3,3 +3,5 @@
 
 # ローカル用の開発サーバ設定
 .claude/
+.vercel
+.env*
