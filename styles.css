@@ -1008,6 +1008,37 @@ dd {
   color: rgba(255, 255, 255, 0.83);
 }
 
+/* Special Thanks（支援者ウォール・順不同） */
+.thanks-wall {
+  margin-top: clamp(48px, 7vw, 90px);
+  padding-top: clamp(40px, 6vw, 64px);
+  border-top: 1px solid var(--white-line);
+}
+
+.thanks-wall h3 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 500;
+  color: #fff;
+}
+
+.thanks-note {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.thanks-names {
+  max-width: 960px;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 2.2;
+  letter-spacing: 0.02em;
+  word-break: break-word;
+}
+
 .screening {
   width: min(1000px, calc(100% - 96px));
 }
