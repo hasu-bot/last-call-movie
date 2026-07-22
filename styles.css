@@ -471,9 +471,15 @@ dd {
   text-transform: uppercase;
 }
 
+/* 語句の途中で折り返さず、まとまりごとに改行させるための単位 */
+.wrap-unit {
+  display: inline-block;
+}
+
+/* カラム幅は1180pxで頭打ちになるため、上限を54pxに抑えて<br />の改行位置を保つ */
 .display-title {
   font-family: var(--serif);
-  font-size: clamp(34px, 4.4vw, 64px);
+  font-size: clamp(34px, 4.25vw, 54px);
   font-weight: 500;
   letter-spacing: 0.035em;
   line-height: 1.55;
@@ -663,6 +669,19 @@ dd {
   font-family: var(--serif);
   font-size: 20px;
   font-weight: 500;
+}
+
+.director-lines {
+  color: var(--ink);
+}
+
+.director-sign {
+  margin-top: 32px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-align: right;
 }
 
 .section-dark {
@@ -1654,8 +1673,10 @@ dd {
     margin-bottom: 30px;
   }
 
+  /* 意図した2行の改行位置を保てるサイズに抑える（3行に折り返さない） */
   .display-title {
-    font-size: clamp(30px, 9vw, 42px);
+    font-size: clamp(24px, 7.7vw, 42px);
+    letter-spacing: 0.02em;
     line-height: 1.55;
   }
 
@@ -1879,7 +1900,7 @@ dd {
   }
 
   .closing h2 {
-    font-size: 28px;
+    font-size: clamp(22px, 6.9vw, 28px);
   }
 
   .closing-support {
@@ -1887,9 +1908,10 @@ dd {
     margin-top: 34px;
   }
 
+  /* flex:1 で等幅にすると「424,000」が枠からはみ出すため内容幅に合わせる */
   .closing-support > span {
     min-width: 0;
-    flex: 1;
+    flex: 0 1 auto;
   }
 
   .closing-support strong {
