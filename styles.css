@@ -251,6 +251,18 @@ dd {
   filter: brightness(0) invert(1) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
 }
 
+/* デスクトップ: 筆文字ロゴが左端の人物の顔に重なるため、
+   コンテンツを左（海側）へ寄せ、ロゴを一回り小さくして顔を避ける */
+@media (min-width: 981px) {
+  .hero-content {
+    margin-left: clamp(40px, 4.5vw, 84px);
+  }
+
+  .hero-title-logo {
+    width: clamp(200px, 20vw, 400px);
+  }
+}
+
 .hero h1 {
   margin-top: 22px;
   font-family: var(--serif);
