@@ -1410,11 +1410,15 @@ dd {
 }
 
 .closing-support strong em {
-  margin-left: 0.16em;
-  font-size: 0.34em;
+  margin-right: 0.14em;
+  font-size: 0.38em;
   font-style: normal;
   letter-spacing: 0.08em;
-  vertical-align: 0.18em;
+  vertical-align: 0.28em;
+}
+
+.closing-support .closing-total strong {
+  font-size: clamp(46px, 6vw, 78px);
 }
 
 .closing-support small {
@@ -2087,6 +2091,10 @@ dd {
 
   .closing-support strong {
     font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .closing-support .closing-total strong {
+    font-size: clamp(34px, 10.5vw, 44px);
   }
 
   .closing-support i {
