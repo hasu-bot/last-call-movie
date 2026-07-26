@@ -6,6 +6,7 @@ const menuButton = document.querySelector("#menuButton");
 const siteNav = document.querySelector("#siteNav");
 const charactersRoot = document.querySelector("#characters");
 const galleryRoot = document.querySelector("#galleryGrid");
+const photoReelRoot = document.querySelector("#photoReelTrack");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightboxImage");
 
@@ -70,6 +71,27 @@ const galleryItems = [
   { image: "/img/gallery-5.jpg", className: "wide" }
 ];
 
+const photoReelItems = [
+  { image: "/img/filmstrip/film-01.jpg", alt: "海辺で撮影に臨む出演者" },
+  { image: "/img/filmstrip/film-02.jpg", alt: "自転車と並ぶ出演者たち" },
+  { image: "/img/filmstrip/film-03.jpg", alt: "海辺で過ごす出演者たち" },
+  { image: "/img/filmstrip/film-04.jpg", alt: "撮影の合間に話す出演者たち" },
+  { image: "/img/filmstrip/film-05.jpg", alt: "海辺の撮影を見守る人たち" },
+  { image: "/img/filmstrip/film-06.jpg", alt: "海辺に立つ出演者" },
+  { image: "/img/filmstrip/film-07.jpg", alt: "夕暮れの撮影風景" },
+  { image: "/img/filmstrip/film-08.jpg", alt: "青空の下で行われるライブ撮影" },
+  { image: "/img/filmstrip/film-09.jpg", alt: "青い海を進む撮影船" },
+  { image: "/img/filmstrip/film-10.jpg", alt: "天草の景色を背にした集合写真" },
+  { image: "/img/filmstrip/film-11.jpg", alt: "海辺のステージに並ぶ出演者たち" },
+  { image: "/img/filmstrip/film-12.jpg", alt: "撮影機材を確認するスタッフ" },
+  { image: "/img/filmstrip/film-13.jpg", alt: "屋外撮影に臨む出演者とスタッフ" },
+  { image: "/img/filmstrip/film-14.jpg", alt: "ライブシーンで使われたギター" },
+  { image: "/img/filmstrip/film-15.jpg", alt: "船上での撮影風景" },
+  { image: "/img/filmstrip/film-16.jpg", alt: "港で撮影する出演者たち" },
+  { image: "/img/filmstrip/film-17.jpg", alt: "カメラの前で打ち合わせる出演者" },
+  { image: "/img/filmstrip/film-18.jpg", alt: "青空の下に集まった撮影チーム" }
+];
+
 function setDaysLeft() {
   const eventDate = new Date("2026-08-29T00:00:00+09:00");
   const msLeft = eventDate.getTime() - Date.now();
@@ -132,6 +154,35 @@ function renderGallery() {
   );
 }
 
+function renderPhotoReel() {
+  const createSet = (duplicate = false) => {
+    const set = document.createElement("div");
+    set.className = "motion-strip-set";
+
+    if (duplicate) {
+      set.setAttribute("aria-hidden", "true");
+    }
+
+    photoReelItems.forEach((item, index) => {
+      const figure = document.createElement("figure");
+      const image = document.createElement("img");
+      image.src = item.image;
+      image.alt = duplicate ? "" : item.alt;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      const number = document.createElement("span");
+      number.textContent = String(index + 1).padStart(2, "0");
+      figure.append(image, number);
+      set.append(figure);
+    });
+
+    return set;
+  };
+
+  photoReelRoot.replaceChildren(createSet(), createSet(true));
+}
+
 function syncScrollEffects() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const percent = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
@@ -161,6 +212,7 @@ function closeLightbox() {
 
 renderCharacters();
 renderGallery();
+renderPhotoReel();
 setDaysLeft();
 
 const observer = new IntersectionObserver(

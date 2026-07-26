@@ -786,6 +786,113 @@ dd {
   line-height: 1.9;
 }
 
+.motion-strip {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(-72px, -5vw, -40px);
+  padding-bottom: clamp(68px, 7vw, 96px);
+  background: var(--paper);
+}
+
+.motion-strip-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: var(--content);
+  margin: 0 auto 16px;
+  color: var(--blue-deep);
+}
+
+.motion-strip-heading::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+
+.motion-strip-heading span,
+.motion-strip-heading p {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.motion-strip-heading p {
+  color: rgba(11, 24, 36, 0.46);
+}
+
+.motion-strip-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+
+.motion-strip-track {
+  --reel-gap: 8px;
+  display: flex;
+  gap: var(--reel-gap);
+  width: max-content;
+  animation: motion-strip-scroll 92s linear infinite;
+  will-change: transform;
+}
+
+.motion-strip-viewport:hover .motion-strip-track {
+  animation-play-state: paused;
+}
+
+.motion-strip-set {
+  display: flex;
+  gap: var(--reel-gap);
+}
+
+.motion-strip-set figure {
+  position: relative;
+  width: clamp(190px, 18vw, 270px);
+  height: clamp(126px, 12vw, 180px);
+  flex: none;
+  overflow: hidden;
+  background: #d8e9ef;
+}
+
+.motion-strip-set figure:nth-child(4n + 2) {
+  width: clamp(160px, 15vw, 225px);
+}
+
+.motion-strip-set img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.01);
+  transition: filter 0.35s ease, transform 0.45s ease;
+}
+
+.motion-strip-set figure:hover img {
+  filter: saturate(1.06) contrast(1);
+  transform: scale(1.025);
+}
+
+.motion-strip-set figure > span {
+  position: absolute;
+  right: 8px;
+  bottom: 7px;
+  display: grid;
+  min-width: 25px;
+  height: 20px;
+  padding: 0 6px;
+  place-items: center;
+  background: rgba(5, 16, 26, 0.68);
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--serif);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+@keyframes motion-strip-scroll {
+  to {
+    transform: translateX(calc(-50% - (var(--reel-gap) / 2)));
+  }
+}
+
 /* キャストのInstagramリンク */
 .cast-insta {
   display: inline-flex;
@@ -1794,6 +1901,38 @@ dd {
     width: 100%;
   }
 
+  .motion-strip {
+    margin-top: -34px;
+    padding-bottom: 64px;
+  }
+
+  .motion-strip-heading {
+    width: calc(100% - 40px);
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+
+  .motion-strip-heading span,
+  .motion-strip-heading p {
+    font-size: 7px;
+    letter-spacing: 0.16em;
+  }
+
+  .motion-strip-track {
+    --reel-gap: 6px;
+    animation-duration: 74s;
+  }
+
+  .motion-strip-set figure,
+  .motion-strip-set figure:nth-child(4n + 2) {
+    width: 150px;
+    height: 100px;
+  }
+
+  .motion-strip-set figure > span {
+    display: none;
+  }
+
   .gallery-section > .section-label,
   .gallery-heading {
     width: calc(100% - 40px);
@@ -1984,4 +2123,16 @@ dd {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .motion-strip-viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: none;
+  }
+  .motion-strip-viewport::-webkit-scrollbar { display: none; }
+  .motion-strip-track {
+    animation: none !important;
+    transform: none;
+  }
+  .motion-strip-set[aria-hidden="true"] { display: none; }
 }
