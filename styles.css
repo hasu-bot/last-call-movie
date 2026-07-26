@@ -1427,6 +1427,8 @@ dd {
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: 0.04em;
+  word-break: normal;
+  text-wrap: wrap;
 }
 
 .news-article-date {
@@ -1447,6 +1449,8 @@ dd {
 .news-article-body > p {
   font-size: 15px;
   line-height: 2.2;
+  word-break: normal;
+  text-wrap: wrap;
 }
 
 .news-article-body > p + p {
@@ -2251,7 +2255,8 @@ dd {
   }
 
   .news-article h1 {
-    font-size: clamp(27px, 8vw, 36px);
+    font-size: clamp(26px, 7.1vw, 30px);
+    letter-spacing: 0.02em;
   }
 
   .news-article-body > p {
