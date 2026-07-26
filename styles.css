@@ -261,6 +261,11 @@ dd {
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
+.hero-copy-line {
+  display: block;
+  white-space: nowrap;
+}
+
 .hero-release {
   display: flex;
   align-items: flex-end;
