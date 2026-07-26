@@ -597,13 +597,25 @@ dd {
 }
 
 .story {
-  padding-bottom: clamp(72px, 8vw, 112px);
+  width: 100%;
+  min-height: clamp(680px, 66vw, 860px);
+  padding-right: max(48px, calc((100vw - 1180px) / 2));
+  padding-left: max(48px, calc((100vw - 1180px) / 2));
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(4, 15, 27, 0.82) 0%, rgba(4, 15, 27, 0.58) 54%, rgba(4, 15, 27, 0.3) 100%),
+    linear-gradient(0deg, rgba(4, 15, 27, 0.42), rgba(4, 15, 27, 0.06)),
+    url("/img/memory-pair-2.jpg") center 52% / cover no-repeat;
 }
 
 .story-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(330px, 0.7fr);
   gap: clamp(60px, 10vw, 150px);
+}
+
+.story .section-label {
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .lead {
@@ -613,27 +625,16 @@ dd {
   line-height: 2;
 }
 
+.story .lead {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .story-copy {
   padding-top: 18px;
 }
 
-.cinema-strip {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 12px;
-  width: min(1460px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.cinema-strip figure {
-  height: clamp(360px, 48vw, 700px);
-  overflow: hidden;
-}
-
-.cinema-strip img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.story .story-copy {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .director-grid {
@@ -1732,22 +1733,16 @@ dd {
   }
 
   .story {
-    padding-bottom: 70px;
+    min-height: 720px;
+    padding: 88px 20px;
+    background:
+      linear-gradient(180deg, rgba(4, 15, 27, 0.72) 0%, rgba(4, 15, 27, 0.5) 45%, rgba(4, 15, 27, 0.82) 100%),
+      url("/img/memory-pair-2.jpg") 58% center / cover no-repeat;
   }
 
   .lead {
     margin-top: 24px;
     font-size: 15px;
-  }
-
-  .cinema-strip {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    width: 100%;
-  }
-
-  .cinema-strip figure {
-    height: 68vw;
   }
 
   .director-name {
