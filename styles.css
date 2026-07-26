@@ -1796,6 +1796,21 @@ dd {
 }
 
 @media (max-width: 760px) {
+  p,
+  h1,
+  h2,
+  h3,
+  dd,
+  figcaption,
+  .lead,
+  .display-title,
+  .cast-card p,
+  .venue-access-note {
+    word-break: normal;
+    line-break: strict;
+    text-wrap: wrap;
+  }
+
   :root {
     --content: calc(100% - 40px);
   }
