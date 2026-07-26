@@ -648,6 +648,21 @@ dd {
   border-left: 2px solid var(--blue);
 }
 
+.director-photo {
+  margin-top: 36px;
+  margin-left: 34px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  box-shadow: 0 24px 56px rgba(43, 112, 139, 0.16);
+}
+
+.director-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+}
+
 .director-name small {
   color: var(--blue-deep);
   font-size: 9px;
@@ -1733,6 +1748,12 @@ dd {
 
   .director-name h2 {
     font-size: 48px;
+  }
+
+  /* 名前の左パディングに合わせて写真の左マージンも揃える */
+  .director-photo {
+    margin-top: 28px;
+    margin-left: 20px;
   }
 
   .section-dark {
