@@ -2279,6 +2279,11 @@ dd {
     line-height: 2.05;
   }
 
+  .news-article-closing {
+    font-size: 16px !important;
+    line-height: 2;
+  }
+
   .news-screening-info,
   .news-article-note {
     padding: 24px 20px;
