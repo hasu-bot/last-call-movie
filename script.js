@@ -72,7 +72,7 @@ const galleryItems = [
 ];
 
 const photoReelItems = [
-  { image: "/img/filmstrip/film-01.jpg", alt: "海辺で撮影に臨む出演者" },
+  { image: "/img/filmstrip/film-01.jpg", alt: "ピアノのある部屋で笑い合う出演者たち" },
   { image: "/img/filmstrip/film-02.jpg", alt: "自転車と並ぶ出演者たち" },
   { image: "/img/filmstrip/film-03.jpg", alt: "海辺で過ごす出演者たち" },
   { image: "/img/filmstrip/film-04.jpg", alt: "撮影の合間に話す出演者たち" },
