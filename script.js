@@ -32,7 +32,7 @@ const characters = [
     name: "篠原 陸",
     actor: "守永莉音",
     instagram: "https://www.instagram.com/rion09_09/",
-    description: "口数は少なく、いつも一歩引いている。それでも鳴らす音は、誰よりも正確だ。",
+    description: "冷静で、あまり感情を表に出さないベーシスト。仲間を支えながら、自分の進路とも向き合う。",
     image: "/img/char-riku.jpg"
   },
   {
@@ -40,7 +40,7 @@ const characters = [
     name: "日野 陽平",
     actor: "濱田敏生",
     instagram: "https://www.instagram.com/hayase.0924/",
-    description: "よく笑い、よく叩く。四人がばらばらにならずにいるのは、たぶん彼のおかげ。",
+    description: "よく笑い、よく叩く。誰よりも音楽を楽しんでいるドラマー。",
     image: "/img/char-yohei.jpg"
   },
   {
