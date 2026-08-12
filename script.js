@@ -16,7 +16,7 @@ const characters = [
     name: "南 晴人",
     actor: "田川隼嗣",
     instagram: "https://www.instagram.com/shunji.kimagure/",
-    description: "まっすぐで不器用な主人公。音楽と出会い、高校最後の夏を駆け抜ける。",
+    description: "思っていることほど、うまく言葉にできない。ギターを持ったときだけ、少しだけ正直になれる。",
     image: "/img/char-haruto.jpg"
   },
   {
@@ -24,7 +24,7 @@ const characters = [
     name: "牧野 葵",
     actor: "中村瑠衣",
     instagram: "https://www.instagram.com/nakarui0216/",
-    description: "晴人の幼なじみ。不器用な想いを抱えながら、いつもそばで見守っている。",
+    description: "晴人の幼なじみ。ずっと隣にいたぶん、いちばん言えないことがある。",
     image: "/img/char-aoi.jpg"
   },
   {
@@ -32,7 +32,7 @@ const characters = [
     name: "篠原 陸",
     actor: "守永莉音",
     instagram: "https://www.instagram.com/rion09_09/",
-    description: "冷静でクールなベーシスト。仲間を支えながら、自分の進路にも向き合っていく。",
+    description: "口数は少なく、いつも一歩引いている。それでも鳴らす音は、誰よりも正確だ。",
     image: "/img/char-riku.jpg"
   },
   {
@@ -40,7 +40,7 @@ const characters = [
     name: "日野 陽平",
     actor: "濱田敏生",
     instagram: "https://www.instagram.com/hayase.0924/",
-    description: "バンドのムードメーカー。誰よりも音楽を楽しみ、仲間を明るく引っ張る存在。",
+    description: "よく笑い、よく叩く。四人がばらばらにならずにいるのは、たぶん彼のおかげ。",
     image: "/img/char-yohei.jpg"
   },
   {
@@ -48,7 +48,7 @@ const characters = [
     name: "榊 秀也",
     actor: "三島竜太",
     instagram: "https://www.instagram.com/ryuta3island321/",
-    description: "天草で活動するミュージシャン。晴人たちの音楽に大きな影響を与える。",
+    description: "天草で歌い続けるミュージシャン。晴人たちに、音楽の面白さと厳しさを教える。",
     image: "/img/char-hideya.jpg"
   },
   {
@@ -56,7 +56,7 @@ const characters = [
     name: "白石 茜",
     actor: "美紗都",
     instagram: "https://www.instagram.com/c5.kumq.c5/",
-    description: "東京から来た音楽教師。音楽の楽しさを教え、彼らの夏を動かしていく。",
+    description: "東京から赴任してきた音楽教師。四人が音を鳴らしはじめたのは、彼女の一言からだった。",
     image: "/img/char-akane.jpg"
   }
 ];
