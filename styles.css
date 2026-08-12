@@ -1238,6 +1238,10 @@ dd {
   text-align: center;
 }
 
+.screening-header-secondary {
+  margin-top: 112px;
+}
+
 .screening-header > p {
   color: var(--blue-deep);
   font-size: 9px;
