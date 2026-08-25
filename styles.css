@@ -1133,6 +1133,10 @@ dd {
   font-weight: 500;
 }
 
+.credits-grid .credits-subheading {
+  margin-top: 54px;
+}
+
 .credits-grid dl {
   border-top: 1px solid var(--white-line);
 }
