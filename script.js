@@ -93,7 +93,7 @@ const photoReelItems = [
 ];
 
 function setDaysLeft() {
-  const eventDate = new Date("2026-08-29T00:00:00+09:00");
+  const eventDate = new Date("2026-09-13T19:30:00+09:00");
   const msLeft = eventDate.getTime() - Date.now();
   daysLeft.textContent = String(Math.max(0, Math.ceil(msLeft / 86_400_000)));
 }
