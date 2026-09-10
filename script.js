@@ -93,9 +93,17 @@ const photoReelItems = [
 ];
 
 function setDaysLeft() {
-  const eventDate = new Date("2026-08-29T00:00:00+09:00");
-  const msLeft = eventDate.getTime() - Date.now();
-  daysLeft.textContent = String(Math.max(0, Math.ceil(msLeft / 86_400_000)));
+  const eventAt = new Date("2026-09-13T19:30:00+09:00");
+
+  // 上映開始を過ぎたら「あと0日」を出し続けず、カウントダウンごと隠す
+  if (eventAt.getTime() - Date.now() <= 0) {
+    daysLeft.closest(".countdown")?.remove();
+    return;
+  }
+
+  // 残り日数は時間差の切り上げではなく、日本時間の暦日の差で数える
+  const jstDay = (ms) => Math.floor((ms + 9 * 3_600_000) / 86_400_000);
+  daysLeft.textContent = String(jstDay(eventAt.getTime()) - jstDay(Date.now()));
 }
 
 function renderCharacters() {
