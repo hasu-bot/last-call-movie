@@ -1238,41 +1238,127 @@ dd {
   color: var(--blue-deep);
 }
 
-.screening-header {
+/* ── 上映一覧（折りたたみ） ──
+   上映が増えても一覧で見渡せるよう <details> で畳む。
+   閉じた行だけで「いつ・どこで・終わったか」が読めることを最優先にする。 */
+.screening-list {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+}
+
+.screening-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.screening-item > summary {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 26px);
+  padding: clamp(20px, 2.6vw, 30px) 4px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.3s ease;
+}
+
+/* Safari の既定マーカーを消す */
+.screening-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+.screening-item > summary:hover {
+  background: rgba(11, 24, 36, 0.03);
+}
+
+.screening-item > summary:focus-visible {
+  outline: 2px solid var(--blue-deep);
+  outline-offset: -2px;
+}
+
+.si-status {
+  flex-shrink: 0;
+  min-width: 84px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-align: center;
 }
 
-.screening-header-secondary {
-  margin-top: 112px;
+.si-status-open {
+  background: var(--blue-deep);
+  color: #fff;
 }
 
-.screening-header > p {
+.si-status-ended {
+  background: rgba(11, 24, 36, 0.07);
+  color: rgba(11, 24, 36, 0.55);
+}
+
+.si-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 20px;
+  min-width: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+.si-date {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.si-date small {
+  margin-left: 8px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.si-venue {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.8vw, 20px);
+  letter-spacing: 0.08em;
+}
+
+/* 終了した回は主役ではないことが一目で分かるよう色を落とす */
+.screening-item:has(.si-status-ended) .si-main {
+  color: rgba(11, 24, 36, 0.5);
+}
+
+.si-toggle {
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  margin-left: auto;
+  margin-right: 6px;
+  border-right: 1.5px solid var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.screening-item[open] .si-toggle {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.screening-body {
+  padding-bottom: clamp(26px, 3.4vw, 46px);
+}
+
+.si-kicker {
   color: var(--blue-deep);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.24em;
 }
 
-.screening-header h2 {
-  margin-top: 16px;
-  font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 86px);
-  font-weight: 500;
-  line-height: 1;
-}
-
-.screening-header h2 small {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-}
-
-.screening-header h3 {
+.screening-body .ticket {
   margin-top: 18px;
-  font-family: var(--serif);
-  font-size: 23px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
 }
 
 .ticket {
@@ -2228,8 +2314,25 @@ dd {
     width: calc(100% - 40px);
   }
 
-  .screening-header h2 {
-    font-size: 48px;
+  /* 狭い幅では状態バッジを上段に、日付と会場を下段に折り返す */
+  .screening-item > summary {
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    padding: 20px 2px;
+  }
+
+  .si-main {
+    flex-basis: 100%;
+    order: 2;
+    gap: 2px 14px;
+  }
+
+  .si-toggle {
+    order: 1;
+  }
+
+  .si-date {
+    font-size: 30px;
   }
 
   .ticket {
