@@ -1316,6 +1316,14 @@ dd {
   margin-top: 32px;
 }
 
+/* 終了した上映の案内。予約導線を外した跡に置くため .button-row と余白を揃える */
+.ticket-ended {
+  margin-top: 32px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
 .ticket-stub {
   display: flex;
   flex-direction: column;
