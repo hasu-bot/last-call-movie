@@ -1566,6 +1566,23 @@ dd {
   font-weight: 500;
 }
 
+.news-article-photo {
+  margin: 36px 0;
+}
+
+.news-article-photo img {
+  width: 100%;
+  display: block;
+  box-shadow: 0 24px 56px rgba(43, 112, 139, 0.16);
+}
+
+.news-article-photo figcaption {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
 .news-screening-info {
   margin-top: 28px;
   padding: 30px 34px;
