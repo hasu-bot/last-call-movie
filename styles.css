@@ -2517,3 +2517,5 @@ dd {
   }
   .motion-strip-set[aria-hidden="true"] { display: none; }
 }
+
+.skip-link{position:fixed;top:12px;left:12px;z-index:10000;background:#fff;color:#07131f;padding:12px 20px;transform:translateY(-200%)}.skip-link:focus{transform:none}section[id]{scroll-margin-top:88px}.hero-actions .button{gap:12px}@media(max-width:760px){.hero-actions .text-button{min-height:44px;display:inline-flex;align-items:center}}

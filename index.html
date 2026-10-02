@@ -76,6 +76,7 @@
     <script src="/assets/analytics.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
     <div class="progress" id="progress" aria-hidden="true"></div>
 
     <header class="site-header" id="siteHeader">
@@ -86,16 +87,16 @@
         <span></span><span></span><span></span><span class="sr-only">メニュー</span>
       </button>
       <nav class="site-nav" id="siteNav" aria-label="メインナビゲーション">
-        <a href="#story">Story</a>
-        <a href="#cast">Cast</a>
-        <a href="#trailer">Trailer</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#news">News</a>
+        <a href="#story">物語</a>
+        <a href="#cast">キャスト</a>
+        <a href="#trailer">予告編</a>
+        <a href="#gallery">写真</a>
+        <a href="#news">お知らせ</a>
         <a class="nav-ticket" href="#screening">上映情報</a>
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <section class="hero" id="top" aria-labelledby="heroTitle">
         <div class="hero-photo" aria-hidden="true"></div>
         <div class="hero-shade" aria-hidden="true"></div>
@@ -111,8 +112,8 @@
             <p>熊本・天草でのご来場、ありがとうございました</p>
           </div>
           <div class="hero-actions">
-            <a class="button button-primary" href="#screening">上映情報を見る</a>
-            <a class="text-button" href="#trailer"><span class="play-icon">▶</span>予告編を見る</a>
+            <a class="button button-primary" href="#trailer"><span class="play-icon" aria-hidden="true">▶</span> 予告編を見る</a>
+            <a class="text-button" href="#screening">上映情報・ご来場の御礼 →</a>
           </div>
         </div>
         <div class="countdown" aria-label="上映までの日数">
@@ -171,7 +172,7 @@
 
       <section class="feature section" id="trailer" aria-label="予告編と先行上映情報">
         <div class="trailer-feature reveal">
-          <iframe
+          <iframe loading="lazy"
             src="https://www.youtube.com/embed/07L8lcJF4HM?rel=0"
             title="映画『ラストコール』予告編"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -339,7 +340,7 @@
 
               <div class="venue-access">
                 <p class="venue-access-label">ACCESS</p>
-                <iframe
+                <iframe loading="lazy"
                   src="https://www.google.com/maps?q=%E7%86%8A%E6%9C%AC%E7%9C%8C%E7%86%8A%E6%9C%AC%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%96%B0%E5%B8%82%E8%A1%978-2+Denkikan&output=embed"
                   title="Denkikanの地図"
                   loading="lazy"
@@ -380,7 +381,7 @@
 
               <div class="venue-access">
                 <p class="venue-access-label">ACCESS</p>
-                <iframe
+                <iframe loading="lazy"
                   src="https://www.google.com/maps?q=%E7%86%8A%E6%9C%AC%E7%9C%8C%E5%A4%A9%E8%8D%89%E5%B8%82%E6%A0%84%E7%94%BA5-23+%E6%9C%AC%E6%B8%A1%E7%AC%AC%E4%B8%80%E6%98%A0%E5%8A%87&output=embed"
                   title="本渡第一映劇の地図"
                   loading="lazy"
