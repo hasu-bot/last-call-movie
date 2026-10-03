@@ -73,6 +73,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/assets/goods.css" />
     <script src="/assets/analytics.js"></script>
   </head>
   <body>
@@ -92,6 +93,7 @@
         <a href="#trailer">予告編</a>
         <a href="#gallery">写真</a>
         <a href="#news">お知らせ</a>
+        <a href="#goods">グッズ</a>
         <a class="nav-ticket" href="#screening">上映情報</a>
       </nav>
     </header>
@@ -219,6 +221,23 @@
       </section>
 
 
+
+      <section class="goods section" id="goods" aria-labelledby="goodsTitle">
+        <div class="section-label"><span>GOODS</span><p>Official collection</p></div>
+        <div class="goods-heading">
+          <h2 id="goodsTitle">あの夏を、<br />暮らしのそばに。</h2>
+          <div class="goods-intro">
+            <p>映画『ラストコール』のグッズ。<br />オンライン販売に向けて、準備を進めています。</p>
+            <span class="goods-announcement" id="goodsAnnouncement">ONLINE STORE · 準備中</span>
+          </div>
+        </div>
+        <div class="goods-grid" id="goodsGrid" aria-label="グッズ一覧"></div>
+        <noscript><p class="goods-no-script">トートバッグ・缶バッジ・タオルのオンライン販売を準備中です。商品写真と販売情報は、準備が整い次第お知らせします。</p></noscript>
+        <div class="goods-shopping-note" id="goodsShoppingNote">
+          <p class="goods-note-label">オンラインでのご購入について</p>
+          <p>販売開始後は、STORESの商品ページからご購入いただけます。<br />価格・在庫・送料は、各商品ページでご確認ください。</p>
+        </div>
+      </section>
 
       <section class="director section">
         <div class="section-label reveal"><span>05</span><p>Director</p></div>
@@ -429,6 +448,8 @@
       </div>
     </div>
 
+    <script src="/assets/goods-data.js"></script>
+    <script src="/assets/goods.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>
