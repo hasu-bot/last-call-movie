@@ -64,7 +64,7 @@ const copyData = () => JSON.parse(JSON.stringify(productionData));
       checks.push(`layout + preparing CTA + existing sections: ${width}px`);
       if (width === 1440) {
         await page.screenshot({ path: path.join(output, "goods-desktop.png") });
-        await page.locator("#goods").screenshot({ path: path.join(output, "goods-desktop-section.png") });
+        await page.locator("#goods").screenshot({ path: path.join(output, "goods-desktop-section.png"), style: ".site-header,.progress,.to-top{visibility:hidden!important}" });
       }
       if (width === 390) {
         await page.locator("#menuButton").focus();
@@ -74,7 +74,7 @@ const copyData = () => JSON.parse(JSON.stringify(productionData));
         await page.keyboard.press("Enter");
         assert.equal(await page.locator("#menuButton").getAttribute("aria-expanded"), "false");
         await page.screenshot({ path: path.join(output, "goods-mobile.png") });
-        await page.locator("#goods").screenshot({ path: path.join(output, "goods-mobile-section.png") });
+        await page.locator("#goods").screenshot({ path: path.join(output, "goods-mobile-section.png"), style: ".site-header,.progress,.to-top{visibility:hidden!important}" });
         await page.locator("#menuButton").focus();
         await page.keyboard.press("Enter");
         await page.keyboard.press("Escape");
